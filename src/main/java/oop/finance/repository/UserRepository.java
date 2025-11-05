@@ -15,7 +15,10 @@ public class UserRepository implements BaseRepository<User> {
   private final JsonUtils jsonUtils = new JsonUtils();
   private final Map<String, User> users;
   private String filePath;
-  private final Type usersMapType = new TypeToken<Map<String, User>>() {}.getType();
+  private final Type usersMapType =
+      new TypeToken<Map<String, User>>() {
+        // комментарий для скипа формата данной строки
+      }.getType();
 
   public UserRepository(String path) {
     this.filePath = path;

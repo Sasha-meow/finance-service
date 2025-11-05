@@ -7,5 +7,7 @@ public final class BaseConstants {
   public static final String DATE_TIME_FORMAT = "dd.MM.yyyy HH:mm";
   public static final String DATE_FORMAT = "dd.MM.yyyy";
 
-  private BaseConstants() {}
+  private BaseConstants() {
+    // запрет генерации экземпляров
+  }
 }
