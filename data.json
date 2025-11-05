@@ -1,0 +1,45 @@
+{
+  "qwe": {
+    "login": "qwe",
+    "password": "qwe",
+    "wallet": {
+      "balance": 1470.0,
+      "transactions": [
+        {
+          "category": "money",
+          "amount": 1500.0,
+          "isIncome": true,
+          "id": "6da06144-12ef-4b21-b9c6-9686ea285ef4",
+          "createdAt": "2025-11-02T15:17:07.1976516"
+        },
+        {
+          "category": "taxi",
+          "amount": 20.0,
+          "isIncome": false,
+          "id": "90cf583b-3175-4ac1-b0de-9b7bdc7e912c",
+          "createdAt": "2025-11-02T15:17:22.1288011"
+        },
+        {
+          "category": "taxi",
+          "amount": 10.0,
+          "isIncome": false,
+          "id": "1cf37d47-b17c-4758-9308-413b0985a7a0",
+          "createdAt": "2025-11-04T15:18:55.6837855"
+        }
+      ],
+      "budgets": {
+        "taxi": {
+          "category": "taxi",
+          "limit": 100.0,
+          "spent": 30.0,
+          "id": "99162f8b-c8fc-4767-8744-17bc9776c7ad",
+          "createdAt": "2025-11-04T15:16:40.2310729"
+        }
+      },
+      "id": "bf84b892-f658-4641-9169-1da8176e5fe9",
+      "createdAt": "2025-11-04T15:16:05.1800114"
+    },
+    "id": "bf84b892-f658-4641-9169-1da8176e5fe9",
+    "createdAt": "2025-11-04T15:16:05.1770111"
+  }
+}
