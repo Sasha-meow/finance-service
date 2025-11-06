@@ -3,6 +3,7 @@ package oop.finance.model;
 import java.util.Objects;
 import oop.finance.model.base.BaseEntity;
 
+/** Модель юзера */
 public class User extends BaseEntity {
   private String login;
   private String password;
@@ -14,6 +15,7 @@ public class User extends BaseEntity {
     this.wallet = new Wallet(id);
   }
 
+  // Геттеры
   public String getLogin() {
     return login;
   }

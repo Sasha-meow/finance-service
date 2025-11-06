@@ -6,6 +6,7 @@ import oop.finance.model.User;
 import oop.finance.repository.UserRepository;
 import oop.finance.service.base.BaseService;
 
+/** Сервис авторизации. Предоставляет методы для работы с юзером и его сессией */
 public class AuthService extends BaseService {
   private final UserRepository userRepository;
   private User currentUser;
@@ -14,10 +15,12 @@ public class AuthService extends BaseService {
     this.userRepository = userRepository;
   }
 
+  // Возвращает текущего аутентифицированного пользователя
   public User getCurrentUser() {
     return currentUser;
   }
 
+  // Находит пользователя по логину
   public User getUserByLogin(String login) {
     if (!userRepository.existsByLogin(login)) {
       throw new UserNotFoundException("Юзер с таким именем не найден!");
@@ -25,6 +28,7 @@ public class AuthService extends BaseService {
     return userRepository.findByLogin(login);
   }
 
+  // Регистрирует нового пользователя в системе
   public void register(String login, String password) {
     validateNotNull(login, "Логин");
     validateNotNull(password, "Пароль");
@@ -36,6 +40,7 @@ public class AuthService extends BaseService {
     userRepository.add(new User(login, password));
   }
 
+  // Выполняет аутентификацию пользователя
   public void authenticate(String login, String password) {
     validateNotNull(login, "Логин");
     validateNotNull(password, "Пароль");
@@ -53,6 +58,7 @@ public class AuthService extends BaseService {
     currentUser = user;
   }
 
+  // Выполняет выход пользователя из системы
   public void logout() {
     currentUser = null;
     userRepository.saveAll();

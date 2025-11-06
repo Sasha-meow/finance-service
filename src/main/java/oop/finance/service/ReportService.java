@@ -7,8 +7,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import oop.finance.model.Report;
 import oop.finance.model.User;
+import oop.finance.utils.DateTimeUtils;
 
+/** Сервис генерации CSV отчетов. Предоставляет методы для выгрузки в формат CSV */
 public class ReportService {
+  // Выгрузка отчета для юзера по заданному адресу
   public String generateReport(User user, String filePath) {
     try {
       Report report = new Report(user);
@@ -21,11 +24,13 @@ public class ReportService {
     }
   }
 
+  // Выгрузка отчета для юзера по дефолтному адресу
   public String generateReport(User user) {
     String fileName =
         String.format(
             "report_%s.csv",
-            LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss")));
+            LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern(DateTimeUtils.DATE_TIME_FORMAT_REPORT)));
 
     return generateReport(user, fileName);
   }

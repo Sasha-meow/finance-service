@@ -1,7 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import oop.finance.exception.InvalidCredentialsException;
-import oop.finance.model.Budget;
 import oop.finance.model.User;
 import oop.finance.service.FinanceService;
 import org.junit.jupiter.api.BeforeEach;
@@ -61,17 +60,6 @@ class FinanceServiceTest {
 
     assertEquals(TEST_AMOUNT - TEST_EXPENSE, user.getWallet().getBalance());
     assertEquals(2, user.getWallet().getTransactions().size());
-  }
-
-  @Test
-  @DisplayName("Добавление бюджета с валидными данными должно отрабатывать без ошибок")
-  void testSetBudget() {
-    financeService.setBudget(user, TEST_CATEGORY, TEST_EXPENSE);
-
-    Budget budget = user.getWallet().getBudget(TEST_CATEGORY);
-
-    assertEquals(TEST_CATEGORY, budget.getCategory());
-    assertEquals(TEST_EXPENSE, budget.getLimit());
   }
 
   @Test

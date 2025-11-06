@@ -4,6 +4,7 @@ import oop.finance.model.Budget;
 import oop.finance.model.User;
 import oop.finance.repository.UserRepository;
 import oop.finance.service.AuthService;
+import oop.finance.service.BudgetService;
 import oop.finance.service.FinanceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 class FinanceIntegrationTest {
   private AuthService authService;
   private FinanceService financeService;
+  private BudgetService budgetService;
   private UserRepository userRepository;
   private final String USER1 = "user1";
   private final String USER2 = "user2";
@@ -27,6 +29,7 @@ class FinanceIntegrationTest {
     userRepository = new UserRepository("test_users.json");
     authService = new AuthService(userRepository);
     financeService = new FinanceService();
+    budgetService = new BudgetService();
   }
 
   @Test
@@ -43,8 +46,8 @@ class FinanceIntegrationTest {
     financeService.addIncome(user, SALARY, AMOUNT_MAX);
 
     // 4. Установка бюджетов
-    financeService.setBudget(user, FOOD, AMOUNT_MEDIUM);
-    financeService.setBudget(user, TAXI, AMOUNT_MEDIUM);
+    budgetService.setBudget(user, FOOD, AMOUNT_MEDIUM);
+    budgetService.setBudget(user, TAXI, AMOUNT_MEDIUM);
 
     // 5. Добавление расходов
     financeService.addExpense(user, FOOD, AMOUNT_MIN);
@@ -70,7 +73,8 @@ class FinanceIntegrationTest {
     User user = authService.getCurrentUser();
 
     financeService.addIncome(user, SALARY, AMOUNT_MAX);
-    financeService.setBudget(user, TAXI, AMOUNT_MIN);
+
+    budgetService.setBudget(user, TAXI, AMOUNT_MIN);
 
     financeService.addExpense(user, TAXI, AMOUNT_MEDIUM);
 

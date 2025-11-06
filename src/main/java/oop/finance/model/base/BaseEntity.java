@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/** Базовая модель сущности. Содержит дату создания и идентификатор */
 public abstract class BaseEntity implements Serializable {
   protected String id;
   protected final LocalDateTime createdAt;

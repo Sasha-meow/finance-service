@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import oop.finance.model.base.BaseEntity;
 
+/**
+ * Модель кошелька пользователя. В будущем планируется добавить возможность добавлять несколько
+ * бюджетов сразу
+ */
 public class Wallet extends BaseEntity {
   private double balance;
   private List<Transaction> transactions;
@@ -24,6 +28,7 @@ public class Wallet extends BaseEntity {
     this.budgets = budgets;
   }
 
+  // Метод добавления транзакции с обновлением баланса
   public void addTransaction(Transaction transaction) {
     transactions.add(transaction);
 
@@ -35,6 +40,7 @@ public class Wallet extends BaseEntity {
     }
   }
 
+  // Метод обновления баланса
   private void updateBudget(Transaction transaction) {
     Budget budget = budgets.get(transaction.getCategory());
     if (budget != null) {

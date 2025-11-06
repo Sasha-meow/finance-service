@@ -12,7 +12,7 @@ public class ConfigReader {
   private FileInputStream fileInputStream = null;
   private final Properties properties = new Properties();
 
-  /** Загружает данные из конфига config.properties проекта с проверкой на ошибки */
+  // Загружает данные из конфига config.properties проекта с проверкой на ошибки
   public void load() throws IOException {
     try {
       fileInputStream = new FileInputStream("config.properties");

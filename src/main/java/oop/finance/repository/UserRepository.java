@@ -11,6 +11,10 @@ import oop.finance.model.User;
 import oop.finance.repository.base.BaseRepository;
 import oop.finance.utils.JsonUtils;
 
+/**
+ * Класс для работы с "хранилищем" данных по юзерам. Предоставляет методы получения, записи и
+ * поиска. Реализует паттерн Repository для отделения логики хранения от бизнес-логики
+ */
 public class UserRepository implements BaseRepository<User> {
   private final JsonUtils jsonUtils = new JsonUtils();
   private final Map<String, User> users;
@@ -25,24 +29,29 @@ public class UserRepository implements BaseRepository<User> {
     this.users = load();
   }
 
+  // Находит пользователя по логину
   public User findByLogin(String login) {
     return users.get(login);
   }
 
+  // Проверяет существование пользователя с указанным логином
   public boolean existsByLogin(String login) {
     return users.containsKey(login);
   }
 
+  // Добавляет нового пользователя
   @Override
   public void add(User user) {
     users.put(user.getLogin(), user);
   }
 
+  // Возвращает список всех пользователей
   @Override
   public List<User> list() {
     return new ArrayList<>(users.values());
   }
 
+  // Загружает пользователей из JSON-файла
   @Override
   public Map<String, User> load() {
     try {
@@ -55,6 +64,7 @@ public class UserRepository implements BaseRepository<User> {
     }
   }
 
+  // Сохраняет всех пользователей в JSON-файл
   @Override
   public void saveAll() {
     jsonUtils.writeToJSON(filePath, users);

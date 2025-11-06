@@ -22,7 +22,7 @@ public class JsonUtils {
     this.gson = gsonBuilder.setPrettyPrinting().create();
   }
 
-  /** Десериализует объект в переданный класс, проверяя предварительно на корректность */
+  // Десериализует json в переданный класс
   public <T> T readFromJSON(String filePath, Type type) throws JsonSyntaxException {
     try (FileReader reader = new FileReader(filePath)) {
       return gson.fromJson(reader, type);
@@ -31,7 +31,7 @@ public class JsonUtils {
     }
   }
 
-  /** Cериализует объект в JSON */
+  // Cериализует объект в JSON
   public <T> void writeToJSON(String filePath, T obj) throws JsonSyntaxException {
     try (FileWriter writer = new FileWriter(filePath)) {
       gson.toJson(obj, writer);

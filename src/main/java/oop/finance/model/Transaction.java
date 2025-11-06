@@ -2,6 +2,7 @@ package oop.finance.model;
 
 import oop.finance.model.base.BaseEntity;
 
+/** Модель транзакции */
 public class Transaction extends BaseEntity {
   private String category;
   private double amount;
@@ -13,6 +14,7 @@ public class Transaction extends BaseEntity {
     this.isIncome = isIncome;
   }
 
+  // Геттеры и сеттеры
   public String getCategory() {
     return category;
   }

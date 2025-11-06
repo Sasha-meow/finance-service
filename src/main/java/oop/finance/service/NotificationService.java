@@ -6,6 +6,7 @@ import oop.finance.constants.BaseConstants;
 import oop.finance.model.Budget;
 import oop.finance.model.User;
 
+/** Сервис уведомлений для мониторинга финансового состояния */
 public class NotificationService {
   private final FinanceService financeService;
 
@@ -13,6 +14,7 @@ public class NotificationService {
     this.financeService = financeService;
   }
 
+  // Проверяет все возможные уведомления для пользователя
   public List<String> checkNotifications(User user) {
     List<String> notifications = new ArrayList<>();
 
@@ -23,6 +25,7 @@ public class NotificationService {
     return notifications;
   }
 
+  // Проверяет уведомления, связанные с бюджетами
   private List<String> checkBudgetNotifications(User user) {
     List<String> notifications = new ArrayList<>();
 
@@ -52,6 +55,7 @@ public class NotificationService {
     return notifications;
   }
 
+  // Проверяет уведомления, связанные с балансом кошелька
   private List<String> checkBalanceNotifications(User user) {
     List<String> notifications = new ArrayList<>();
     double balance = user.getWallet().getBalance();
@@ -73,6 +77,7 @@ public class NotificationService {
     return notifications;
   }
 
+  // Проверяет уведомления об общем финансовом здоровье
   private List<String> checkFinancialHealthNotifications(User user) {
     List<String> notifications = new ArrayList<>();
 

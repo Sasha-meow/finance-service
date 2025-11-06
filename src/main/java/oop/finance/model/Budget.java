@@ -4,6 +4,7 @@ import oop.finance.constants.BaseConstants;
 import oop.finance.exception.InvalidCredentialsException;
 import oop.finance.model.base.BaseEntity;
 
+/** Модель бюджета */
 public class Budget extends BaseEntity {
   private String category;
   private double limit;
@@ -25,6 +26,7 @@ public class Budget extends BaseEntity {
     this.spent = spent;
   }
 
+  // Валидация лимита
   public void validateLimit(double newLimit) {
     if (newLimit < 0) {
       throw new InvalidCredentialsException("Лимит не может быть отрицательным!");
@@ -46,6 +48,7 @@ public class Budget extends BaseEntity {
     return limit - spent;
   }
 
+  // Получение процента расхода
   public double getUsagePercentage() {
     return limit > 0 ? (spent / limit) * BaseConstants.MAX_PERCENT : 0;
   }
